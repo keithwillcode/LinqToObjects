@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="All.cs" />
     <Compile Include="Any.cs" />
+    <Compile Include="SkipWhile.cs" />
     <Compile Include="Repeat.cs" />
     <Compile Include="Count.cs" />
     <Compile Include="Distinct.cs" />
