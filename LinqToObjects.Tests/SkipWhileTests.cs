@@ -6,30 +6,30 @@ namespace LinqToObjects.Tests
     [TestFixture]
     public class SkipWhileTests
     {
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
-            Enumerable.SkipWhile<Int32>(null, i => i < 0);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.SkipWhile<Int32>(null, i => i < 0));
         }
 
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNullAndOverloadIsUsed()
         {
-            Enumerable.SkipWhile<Int32>(null, (i, j) => i < 0);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.SkipWhile<Int32>(null, (i, j) => i < 0));
         }
 
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenPredicateIsNull()
         {
             Func<Int32, Boolean> predicate = null;
-            Enumerable.SkipWhile<Int32>(Enumerable.Empty<Int32>(), predicate);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.SkipWhile<Int32>(Enumerable.Empty<Int32>(), predicate));
         }
 
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenPredicateIsNullAndOverloadIsUsed()
         {
             Func<Int32, Int32, Boolean> predicate = null;
-            Enumerable.SkipWhile<Int32>(Enumerable.Empty<Int32>(), predicate);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.SkipWhile<Int32>(Enumerable.Empty<Int32>(), predicate));
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace LinqToObjects.Tests
             var source = new[] { 1, 2, 3 };
             var result = source.SkipWhile(i => i >= 1);
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(Enumerable.Empty<Int32>(), result));
+            Assert.That(result, Is.EqualTo(Enumerable.Empty<Int32>()));
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace LinqToObjects.Tests
             var source = new[] { 1, 2, 3 };
             var result = source.SkipWhile((i, j) => i >= 1 && j >= 0);
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(Enumerable.Empty<Int32>(), result));
+            Assert.That(result, Is.EqualTo(Enumerable.Empty<Int32>()));
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace LinqToObjects.Tests
             var result = source.SkipWhile(i => i == 1 || i == 3);
             var expected = new[] { 2, 3 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace LinqToObjects.Tests
             var result = source.SkipWhile((i, j) => (i == 1 || i == 3) && j > -1);
             var expected = new[] { 2, 3 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

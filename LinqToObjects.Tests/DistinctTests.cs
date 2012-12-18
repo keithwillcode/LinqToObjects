@@ -11,16 +11,14 @@ namespace LinqToObjects.Tests
         public void EmptySequenceIsReturnedWhenSourceContainsNoElements()
         {
             var source = new Int32[0];
-
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(source, Enumerable.Empty<Int32>()));
+            Assert.That(source, Is.EqualTo(Enumerable.Empty<Int32>()));
         }
         
         [Test]
         public void AllElementsAreReturnedWhenSourceContainsNoDuplicates()
         {
             var source = new[] { 1, 2, 3 };
-
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(source, source.Distinct()));
+            Assert.That(source, Is.EqualTo(source.Distinct()));
         }
 
         [Test]
@@ -29,7 +27,7 @@ namespace LinqToObjects.Tests
             var source = new[] { 1, 2, 3, 3 };
             var expected = new[] { 1, 2, 3 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, source.Distinct()));
+            Assert.That(source.Distinct(), Is.EqualTo(expected));
         }
 
         [Test, ExpectedException(typeof(ArgumentNullException))]

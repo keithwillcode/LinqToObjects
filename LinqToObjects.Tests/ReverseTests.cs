@@ -7,10 +7,10 @@ namespace LinqToObjects.Tests
     [TestFixture]
     public class ReverseTests
     {
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionWhenSourceIsNull()
         {
-            Enumerable.Reverse<Int32>(null);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.Reverse<Int32>(null));
         }
 
         [Test]
@@ -20,7 +20,7 @@ namespace LinqToObjects.Tests
             var result = source.Reverse();
             var expected = new[] { 3, 2, 1 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

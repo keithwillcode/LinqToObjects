@@ -12,7 +12,7 @@ namespace LinqToObjects.Tests
             var sequence = Enumerable.Empty<Int32>();
             var enumerator = sequence.GetEnumerator();
 
-            Assert.IsFalse(enumerator.MoveNext());
+            Assert.That(enumerator.MoveNext(), Is.False);
         }
     }
 }

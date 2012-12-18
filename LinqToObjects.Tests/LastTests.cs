@@ -43,21 +43,21 @@ namespace LinqToObjects.Tests
         public void LastReturnsLastElementInSequenceOfLengthOneWhenNoPredicateIsProvided()
         {
             var source = new[] { 3 };
-            Assert.AreEqual(3, source.Last());
+            Assert.That(source.Last(), Is.EqualTo(3));
         }
 
         [Test]
         public void LastReturnsLastElementInSequenceWhenNoPredicateIsProvided()
         {
             var source = new[] { 1, 2, 3 };
-            Assert.AreEqual(3, source.Last());
+            Assert.That(source.Last(), Is.EqualTo(3));
         }
 
         [Test]
         public void LastReturnsLastElementInSequenceThatMatchesThePredicate()
         {
             var source = new[] { 1, 2, 3 };
-            Assert.AreEqual(2, source.Last(i => i == 2));
+            Assert.That(source.Last(i => i == 2), Is.EqualTo(2));
         }
     }
 }

@@ -6,30 +6,30 @@ namespace LinqToObjects.Tests
     [TestFixture]
     public class WhereTests
     {
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
-            Enumerable.Where(null, (Int32 i) => i == 1);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.Where(null, (Int32 i) => i == 1));
         }
 
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNullAndOverloadIsUsed()
         {
-            Enumerable.Where(null, (Int32 i, Int32 index) => i == 1);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.Where(null, (Int32 i, Int32 index) => i == 1));
         }
 
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenPredicateIsNull()
         {
             Func<Int32, Boolean> predicate = null;
-            Enumerable.Where(new Int32[0], predicate);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.Where(new Int32[0], predicate));
         }
 
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenPredicateIsNullAndOverloadIsUsed()
         {
             Func<Int32, Int32, Boolean> predicate = null;
-            Enumerable.Where(new Int32[0], predicate);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.Where(new Int32[0], predicate));
         }
 
         [Test]

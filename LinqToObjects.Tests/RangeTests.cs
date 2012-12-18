@@ -17,7 +17,8 @@ namespace LinqToObjects.Tests
         {
             var range = Enumerable.Range(0, 1);
             var expected = new[] { 0 };
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, range));
+
+            Assert.That(range, Is.EqualTo(expected));
         }
 
         [Test]
@@ -25,7 +26,8 @@ namespace LinqToObjects.Tests
         {
             var range = Enumerable.Range(0, 5);
             var expected = new[] { 0, 1, 2, 3, 4 };
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, range));
+
+            Assert.That(range, Is.EqualTo(expected));
         }
     }
 }

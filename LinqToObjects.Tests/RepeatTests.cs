@@ -18,7 +18,7 @@ namespace LinqToObjects.Tests
             var result = Enumerable.Repeat(1, 5);
             var expected = new[] { 1, 1, 1, 1, 1 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

@@ -6,10 +6,10 @@ namespace LinqToObjects.Tests
     [TestFixture]
     public class SkipTests
     {
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
-            Enumerable.Skip<Int32>(null, 0);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.Skip<Int32>(null, 0));
         }
 
         [Test]
@@ -18,7 +18,7 @@ namespace LinqToObjects.Tests
             var source = new[] { 1 };
             var result = source.Skip(2);
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(Enumerable.Empty<Int32>(), result));
+            Assert.That(result, Is.EqualTo(Enumerable.Empty<Int32>()));
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace LinqToObjects.Tests
             var result = source.Skip(0);
             var expected = new[] { 1 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace LinqToObjects.Tests
             var result = source.Skip(3);
             var expected = new[] { 4, 5 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

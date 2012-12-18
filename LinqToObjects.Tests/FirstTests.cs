@@ -43,14 +43,14 @@ namespace LinqToObjects.Tests
         public void FirstItemFromSourceIsReturnedWhenPredicateIsNotProvided()
         {
             var source = new[] { 1, 2, 3 };
-            Assert.AreEqual(1, source.First());
+            Assert.That(source.First(), Is.EqualTo(1));
         }
 
         [Test]
         public void FirstItemThatMatchesThePredicateIsReturned()
         {
             var source = new[] { 1, 2, 3 };
-            Assert.AreEqual(2, source.First(i => i == 2));
+            Assert.That(source.First(i => i == 2), Is.EqualTo(2));
         }
     }
 }

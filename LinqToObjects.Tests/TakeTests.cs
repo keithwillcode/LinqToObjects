@@ -6,10 +6,10 @@ namespace LinqToObjects.Tests
     [TestFixture]
     public class TakeTests
     {
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
-            Enumerable.Take<Int32>(null, 1);
+            Assert.Throws<ArgumentNullException>(() => Enumerable.Take<Int32>(null, 1));
         }
 
         [Test]
@@ -18,7 +18,7 @@ namespace LinqToObjects.Tests
             var source = new[] { 1, 2, 3 };
             var result = source.Take(0);
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(Enumerable.Empty<Int32>(), result));
+            Assert.That(result, Is.EqualTo(Enumerable.Empty<Int32>()));
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace LinqToObjects.Tests
             var result = source.Take(2);
             var expected = new[] { 1, 2 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace LinqToObjects.Tests
             var result = source.Take(6);
             var expected = new[] { 1, 2, 3 };
 
-            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
