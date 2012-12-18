@@ -68,6 +68,7 @@
     <Compile Include="ReverseTests.cs" />
     <Compile Include="SkipTests.cs" />
     <Compile Include="TakeTests.cs" />
+    <Compile Include="AggregateTests.cs" />
     <Compile Include="WhereTests.cs" />
   </ItemGroup>
   <ItemGroup>
