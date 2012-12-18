@@ -1,18 +1,18 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class TakeTests
     {
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
             Enumerable.Take<Int32>(null, 1);
         }
 
-        [TestMethod]
+        [Test]
         public void EmptySequenceIsReturnedWhenCountIsLessThanOrEqualToZero()
         {
             var source = new[] { 1, 2, 3 };
@@ -21,7 +21,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(Enumerable.Empty<Int32>(), result));
         }
 
-        [TestMethod]
+        [Test]
         public void CountElementsAreReturnedWhenCountIsLessThanNumberOfElements()
         {
             var source = new[] { 1, 2, 3 };
@@ -31,7 +31,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
         }
 
-        [TestMethod]
+        [Test]
         public void AllElementsAreReturnedWhenCountIsGreaterThanNumberOfElements()
         {
             var source = new[] { 1, 2, 3 };

@@ -1,63 +1,57 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class CountTests
     {
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
             Enumerable.Any<Int32>(null);
         }
 
-        [TestMethod]
+        [Test]
         public void CountReturnsZeroWhenSourceIsEmpty()
         {
             var source = new Int32[0];
-
-            Assert.AreEqual(0, source.Count());
+            Assert.That(source.Count(), Is.EqualTo(0));
         }
 
-        [TestMethod]
+        [Test]
         public void CountReturnsOneWhenSourceHasOneElement()
         {
             var source = new[] { 1 };
-
-            Assert.AreEqual(1, source.Count());
+            Assert.That(source.Count(), Is.EqualTo(1));
         }
 
-        [TestMethod]
+        [Test]
         public void CountReturnsTotalNumberOfItemsWhenThereAreMoreThanOneElement()
         {
             var source = new[] { 1, 2, 3 };
-
-            Assert.AreEqual(3, source.Count());
+            Assert.That(source.Count(), Is.EqualTo(3));
         }
 
-        [TestMethod]
+        [Test]
         public void CountReturnsZeroWhenSourceIsEmptyAndPredicateIsUsed()
         {
             var source = new Int32[0];
-
-            Assert.AreEqual(0, source.Count(i => i == 0));
+            Assert.That(source.Count(i => i == 0), Is.EqualTo(0));
         }
 
-        [TestMethod]
+        [Test]
         public void CountReturnsZeroWhenPredicateDoesNotMatchAnyElementsInSource()
         {
             var source = new[] { 1, 2, 3 };
-
-            Assert.AreEqual(0, source.Count(i => i == 0));
+            Assert.That(source.Count(i => i == 0), Is.EqualTo(0));
         }
 
-        [TestMethod]
+        [Test]
         public void CountReturnsNumberOfElementsThatMatchPredicate()
         {
             var source = new[] { 1, 2, 3 };
-
-            Assert.AreEqual(2, source.Count(i => i >= 2));
+            Assert.That(source.Count(i => i >= 2), Is.EqualTo(2));
         }
     }
 }

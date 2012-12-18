@@ -1,18 +1,18 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class SelectTests
     {
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
             Enumerable.Select(null, (Int32 i) => i == 0);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSelectorIsNull()
         {
             var source = new Int32[0];
@@ -20,13 +20,13 @@ namespace LinqToObjects.Tests
             Enumerable.Select(source, selector);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNullAndOverloadIsUsed()
         {
             Enumerable.Select(null, (Int32 i, Int32 index) => i == 0);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSelectorIsNullAndOverloadIsUsed()
         {
             var source = new Int32[0];
@@ -34,7 +34,7 @@ namespace LinqToObjects.Tests
             Enumerable.Select(source, selector);
         }
 
-        [TestMethod]
+        [Test]
         public void TargetProjectionsOfElementsAreReturnedWhenSourceIsEmpty()
         {
             var source = new Int32[0];
@@ -44,7 +44,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
         }
 
-        [TestMethod]
+        [Test]
         public void TargetProjectionsOfElementsAreReturnedWhenSourceIsNotEmpty()
         {
             var source = new[] { 1, 2, 3 };

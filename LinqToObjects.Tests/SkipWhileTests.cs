@@ -1,38 +1,38 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class SkipWhileTests
     {
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
             Enumerable.SkipWhile<Int32>(null, i => i < 0);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNullAndOverloadIsUsed()
         {
             Enumerable.SkipWhile<Int32>(null, (i, j) => i < 0);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenPredicateIsNull()
         {
             Func<Int32, Boolean> predicate = null;
             Enumerable.SkipWhile<Int32>(Enumerable.Empty<Int32>(), predicate);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenPredicateIsNullAndOverloadIsUsed()
         {
             Func<Int32, Int32, Boolean> predicate = null;
             Enumerable.SkipWhile<Int32>(Enumerable.Empty<Int32>(), predicate);
         }
 
-        [TestMethod]
+        [Test]
         public void EmptySequenceIsReturnedWhenPredicateMatchesAllElements()
         {
             var source = new[] { 1, 2, 3 };
@@ -41,7 +41,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(Enumerable.Empty<Int32>(), result));
         }
 
-        [TestMethod]
+        [Test]
         public void EmptySequenceIsReturnedWhenPredicateMatchesAllElementsAndOverloadIsUsed()
         {
             var source = new[] { 1, 2, 3 };
@@ -50,7 +50,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(Enumerable.Empty<Int32>(), result));
         }
 
-        [TestMethod]
+        [Test]
         public void ElementsRemainingInSequenceAfterPredicateDoesNotMatchAreReturned()
         {
             var source = new[] { 1, 2, 3 };
@@ -60,7 +60,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, result));
         }
 
-        [TestMethod]
+        [Test]
         public void ElementsRemainingInSequenceAfterPredicateDoesNotMatchAreReturnedWhenOverloadIsUsed()
         {
             var source = new[] { 1, 2, 3 };

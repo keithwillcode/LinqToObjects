@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ReverseTests
     {
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionWhenSourceIsNull()
         {
             Enumerable.Reverse<Int32>(null);
         }
 
-        [TestMethod]
+        [Test]
         public void ReverseInvertsTheOrderOfElementsInASequence()
         {
             var source = new[] { 1, 2, 3 };

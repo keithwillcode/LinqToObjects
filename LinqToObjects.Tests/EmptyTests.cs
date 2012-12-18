@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class EmptyTests
     {
-        [TestMethod]
+        [Test]
         public void ReturnsASequenceThatYieldsNoElements()
         {
             var sequence = Enumerable.Empty<Int32>();

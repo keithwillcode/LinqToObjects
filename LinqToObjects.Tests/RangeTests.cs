@@ -1,18 +1,18 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RangeTests
     {
-        [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Test, ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ArgumentOutOfRangeExceptionIsThrownWhenCountIsLessThanZero()
         {
             Enumerable.Range(0, -1);
         }
 
-        [TestMethod]
+        [Test]
         public void RangeReturnsStartWhenCountIsOne()
         {
             var range = Enumerable.Range(0, 1);
@@ -20,7 +20,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, range));
         }
 
-        [TestMethod]
+        [Test]
         public void RangeReturnsIntegralNumbersWithinAGivenRange()
         {
             var range = Enumerable.Range(0, 5);

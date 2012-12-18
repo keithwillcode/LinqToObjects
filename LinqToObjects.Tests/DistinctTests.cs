@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class DistinctTests
     {
-        [TestMethod]
+        [Test]
         public void EmptySequenceIsReturnedWhenSourceContainsNoElements()
         {
             var source = new Int32[0];
@@ -15,7 +15,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(source, Enumerable.Empty<Int32>()));
         }
         
-        [TestMethod]
+        [Test]
         public void AllElementsAreReturnedWhenSourceContainsNoDuplicates()
         {
             var source = new[] { 1, 2, 3 };
@@ -23,7 +23,7 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(source, source.Distinct()));
         }
 
-        [TestMethod]
+        [Test]
         public void DuplicatesAreNotReturnedWhenSourceContainsDuplicates()
         {
             var source = new[] { 1, 2, 3, 3 };
@@ -32,13 +32,13 @@ namespace LinqToObjects.Tests
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(expected, source.Distinct()));
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
             Enumerable.Distinct<Int32>(null);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNullAndComparerIsProvided()
         {
             Enumerable.Distinct<Int32>(null, EqualityComparer<Int32>.Default);

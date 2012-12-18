@@ -1,18 +1,18 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RepeatTests
     {
-        [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [Test, ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ArgumentOutOfRangeExceptionIsThrownWhenCountIsLessThanZero()
         {
             Enumerable.Repeat<Int32>(1, -1);
         }
 
-        [TestMethod]
+        [Test]
         public void GeneratesASequenceThatContainsOneRepeatedElement()
         {
             var result = Enumerable.Repeat(1, 5);

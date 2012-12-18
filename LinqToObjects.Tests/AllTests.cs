@@ -1,39 +1,39 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace LinqToObjects.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class AllTests
     {
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [Test, ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentNullExceptionIsThrownWhenSourceIsNull()
         {
             Enumerable.All(null, (Int32 i) => i == 0);
         }
 
-        [TestMethod]
+        [Test]
         public void AllReturnsTrueWhenSourceIsEmpty()
         {
             var source = new Int32[0];
 
-            Assert.IsTrue(source.All(i => i == 0));
+            Assert.That(source.All(i => i == 0), Is.True);
         }
 
-        [TestMethod]
+        [Test]
         public void AllReturnsTrueWhenEveryElementMatchesThePredicate()
         {
             var source = new[] { 1, 2, 3 };
 
-            Assert.IsTrue(source.All(i => i < 4));
+            Assert.That(source.All(i => i > 0), Is.True);
         }
 
-        [TestMethod]
+        [Test]
         public void AllReturnsFalseWhenEveryElementDoesNotMatchThePredicate()
         {
             var source = new[] { 1, 2, 3 };
 
-            Assert.IsFalse(source.All(i => i < 3));
+            Assert.That(source.All(i => i == 0), Is.False);
         }
     }
 }
