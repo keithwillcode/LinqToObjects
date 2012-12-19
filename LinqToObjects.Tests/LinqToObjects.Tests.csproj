@@ -71,6 +71,7 @@
     <Compile Include="TakeTests.cs" />
     <Compile Include="AggregateTests.cs" />
     <Compile Include="ElementAtTests.cs" />
+    <Compile Include="ContainsTests.cs" />
     <Compile Include="WhereTests.cs" />
   </ItemGroup>
   <ItemGroup>
