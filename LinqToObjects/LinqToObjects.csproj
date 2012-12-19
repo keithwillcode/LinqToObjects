@@ -42,6 +42,8 @@
     <Compile Include="Aggregate.cs" />
     <Compile Include="All.cs" />
     <Compile Include="Any.cs" />
+    <Compile Include="ElementAtOrDefault.cs" />
+    <Compile Include="ElementAt.cs" />
     <Compile Include="Take.cs" />
     <Compile Include="SkipWhile.cs" />
     <Compile Include="Repeat.cs" />

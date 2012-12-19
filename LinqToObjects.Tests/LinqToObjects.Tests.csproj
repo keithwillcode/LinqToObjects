@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ElementAtOrDefaultTests.cs" />
     <Compile Include="SkipWhileTests.cs" />
     <Compile Include="CountTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="SkipTests.cs" />
     <Compile Include="TakeTests.cs" />
     <Compile Include="AggregateTests.cs" />
+    <Compile Include="ElementAtTests.cs" />
     <Compile Include="WhereTests.cs" />
   </ItemGroup>
   <ItemGroup>
