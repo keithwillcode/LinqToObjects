@@ -18,8 +18,7 @@ namespace LinqToObjects.Tests
             [Test]
             public void ArgumentNullExceptionIsThrownWhenFuncIsNull()
             {
-                Func<Int32, Int32, Int32> func = null;
-                Assert.Throws<ArgumentNullException>(() => Enumerable.Aggregate<Int32>(Enumerable.Empty<Int32>(), func));
+                Assert.Throws<ArgumentNullException>(() => Enumerable.Aggregate<Int32>(Enumerable.Empty<Int32>(), null));
             }
 
             [Test]
@@ -51,8 +50,7 @@ namespace LinqToObjects.Tests
             [Test]
             public void ArgumentNullExceptionIsThrownWhenFuncIsNull()
             {
-                Func<Double, Int32, Double> func = null;
-                Assert.Throws<ArgumentNullException>(() => Enumerable.Aggregate<Int32, Double>(Enumerable.Empty<Int32>(), 0.0d, func));
+                Assert.Throws<ArgumentNullException>(() => Enumerable.Aggregate<Int32, Double>(Enumerable.Empty<Int32>(), 0.0d, null));
             }
 
             [Test]
@@ -77,15 +75,13 @@ namespace LinqToObjects.Tests
             [Test]
             public void ArgumentNullExceptionIsThrownWhenFuncIsNull()
             {
-                Func<Double, Int32, Double> func = null;
-                Assert.Throws<ArgumentNullException>(() => Enumerable.Aggregate<Int32, Double, String>(Enumerable.Empty<Int32>(), 0.0d, func, i => Convert.ToString(i)));
+                Assert.Throws<ArgumentNullException>(() => Enumerable.Aggregate<Int32, Double, String>(Enumerable.Empty<Int32>(), 0.0d, null, i => Convert.ToString(i)));
             }
 
             [Test]
             public void ArgumentNullExceptionIsThrownWhenResultSelectorIsNull()
             {
-                Func<Double, String> resultSelector = null;
-                Assert.Throws<ArgumentNullException>(() => Enumerable.Aggregate<Int32, Double, String>(Enumerable.Empty<Int32>(), 0.0d, (i, j) => i, resultSelector));
+                Assert.Throws<ArgumentNullException>(() => Enumerable.Aggregate<Int32, Double, String>(Enumerable.Empty<Int32>(), 0.0d, (i, j) => i, null));
             }
 
             [Test]

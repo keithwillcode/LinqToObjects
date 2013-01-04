@@ -18,9 +18,8 @@ namespace LinqToObjects.Tests
             [Test]
             public void ArgumentNullExceptionIsThrownWhenSelectorIsNull()
             {
-                var source = new Int32[0];
                 Func<Int32, String> selector = null;
-                Assert.Throws<ArgumentNullException>(() => Enumerable.Select(source, selector));
+                Assert.Throws<ArgumentNullException>(() => Enumerable.Select<Int32, String>(Enumerable.Empty<Int32>(), selector));
             }
 
             [Test]
@@ -56,16 +55,15 @@ namespace LinqToObjects.Tests
             [Test]
             public void ArgumentNullExceptionIsThrownWhenSelectorIsNull()
             {
-                var source = new Int32[0];
                 Func<Int32, Int32, String> selector = null;
-                Assert.Throws<ArgumentNullException>(() => Enumerable.Select(source, selector));
+                Assert.Throws<ArgumentNullException>(() => Enumerable.Select(Enumerable.Empty<Int32>(), selector));
             }
 
             [Test]
             public void TargetProjectionsOfElementsAreReturnedWhenSourceIsEmpty()
             {
-                var source = new Int32[0];
-                var expected = new Boolean[0];
+                var source = Enumerable.Empty<Int32>();
+                var expected = Enumerable.Empty<Boolean>();
                 var result = source.Select((i, j) => i == 0);
 
                 Assert.That(result, Is.EqualTo(expected));

@@ -43,6 +43,9 @@
     <Compile Include="All.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Contains.cs" />
+    <Compile Include="Concat.cs" />
+    <Compile Include="Except.cs" />
+    <Compile Include="DefaultIfEmpty.cs" />
     <Compile Include="ElementAtOrDefault.cs" />
     <Compile Include="ElementAt.cs" />
     <Compile Include="Take.cs" />
