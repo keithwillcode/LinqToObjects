@@ -30,18 +30,7 @@ namespace LinqToObjects
 
         public static TAccumulate Aggregate<TSource, TAccumulate>(this IEnumerable<TSource> source, TAccumulate seed, Func<TAccumulate, TSource, TAccumulate> func)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
-
-            if (func == null)
-                throw new ArgumentNullException("func");
-
-            var aggregateValue = seed;
-
-            foreach (var element in source)
-                aggregateValue = func(aggregateValue, element);
-
-            return aggregateValue;
+            return Aggregate(source, seed, func, t => t);
         }
 
         public static TResult Aggregate<TSource, TAccumulate, TResult>(this IEnumerable<TSource> source, TAccumulate seed, Func<TAccumulate, TSource, TAccumulate> func, Func<TAccumulate, TResult> resultSelector)
