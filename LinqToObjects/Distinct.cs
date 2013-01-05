@@ -23,16 +23,10 @@ namespace LinqToObjects
 
         private static IEnumerable<TSource> RunDistinctAlgorithm<TSource>(IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
         {
-            var elementsSeen = new HashSet<TSource>(comparer);
+            var hash = new HashSet<TSource>(source, comparer);
 
-            foreach (var element in source)
-            {
-                if (elementsSeen.Contains(element) == false)
-                {
-                    elementsSeen.Add(element);
-                    yield return element;
-                }
-            }
+            foreach (var element in hash)
+                yield return element;
         }
     }
 }
